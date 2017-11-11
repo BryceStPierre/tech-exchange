@@ -1,0 +1,15 @@
+.navbar {
+    margin-bottom: 0;
+}
+
+.jumbotron {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../img/electronics.jpeg');
+}
+
+.jumbotron h1, .jumbotron h2 {
+    color: #FFFFFF;
+}
+
+/*#23b04b*/
