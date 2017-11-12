@@ -54,15 +54,19 @@
     <div class="container">
         <form>
             <div class="row">
-                <div class="col-sm-6 col-md-8 col-lg-9">
+                <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2 class="text-center">Post Ad</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-md-4 col-lg-4">                    
                     <div class="form-group">
                         <label for="title">Item Title</label>
                         <input type="text" class="form-control" id="title" placeholder="Item Title">
                     </div>
 
                     <div class="row">
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <div class="col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label for="ad">Ad Type</label>
                                 <select class="form-control" id="ad">
@@ -71,7 +75,8 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+                        <div class="col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label for="category">Item Category</label>
                                 <select class="form-control" id="category">
@@ -84,58 +89,68 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-md-8 col-lg-8">
-                            <div class="form-group">
-                                <label for="description">Item Description</label>
-                                <textarea rows="4" class="form-control" id="description" placeholder="Item Description"></textarea>
+                    <div class="form-group">
+                        <label for="description">Item Description</label>
+                        <textarea rows="5" class="form-control" id="description" placeholder="Item Description"></textarea>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4">
+                    <div class="form-group">
+                        <label for="price">Item Price</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">$</div>
+                            <input type="text" class="form-control" id="price" placeholder="Amount">
+                            <div class="input-group-addon">.00</div>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionPrice" id="option1" value="option1" checked>
+                                Price
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionPrice" id="option2" value="option2">
+                                Free
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="optionPrice" id="option3" value="option3">
+                                Contact
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telephone">Telephone</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-earphone"></span>
+                                </div>
+                                <input type="text" class="form-control" id="telephone" placeholder="Telephone">
                             </div>
                         </div>
-                        <div class="col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label for="price">Item Price</label>
-                                <div class="input-group">
-                                    <div class="input-group-addon">$</div>
-                                    <input type="text" class="form-control" id="price" placeholder="Amount">
-                                    <div class="input-group-addon">.00</div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-envelope"></span>
                                 </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionPrice" id="option1" value="option1" checked>
-                                        Price
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionPrice" id="option2" value="option2">
-                                        Free
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="optionPrice" id="option3" value="option3">
-                                        Contact
-                                    </label>
-                                </div>
+                                <input type="text" class="form-control" id="email" placeholder="Email Address">
                             </div>
                         </div>
                     </div>
-
-                    <p class="text-center">
-                        <button type="submit" class="btn btn-primary">Post Ad</button>
-                        <button class="btn btn-danger">Cancel</button>
-                    </p>
-                    
                 </div>
 
-                <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="col-sm-4 col-md-4 col-lg-4">
                     <img class="img-responsive img-rounded" src="img/dummy.png" alt="Image">
                     <br>
                     <div class="form-group">
                         <label for="image">Item Image</label>
-                        <input name="myFile" type="file">
+                        <input name="image" id="image" type="file">
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
 
                         <div class="input-group">
                             <span class="input-group-addon" id="addon1">
@@ -162,10 +177,14 @@
                             </label>
                         </div>
                     </div>
-                    <button class="btn btn-primary">Preview</button>
+                    <button class="btn btn-primary">Preview</button>-->
                 </div>
-                
+
             </div>
+            <p class="text-center">
+                <button type="submit" class="btn btn-primary">Post Ad</button>
+                <button class="btn btn-danger">Cancel</button>
+            </p>
         </form>
     </div>
 
