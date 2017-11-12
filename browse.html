@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>TechExchange | Browse</title>
+
+    <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+    <link href="lib/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="lib/bootstrap-3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">TechExchange</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Browse</a></li>
+                    <li><a href="#">Buy</a></li> <!-- Add class=active. -->
+                    <li><a href="#">Sell</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Sign In</a></li>
+                </ul>
+                <form class="navbar-form navbar-right">
+                    <div class="form-group">                            
+                        <select class="form-control">
+                            <option>All</option>
+                            <option>Buying</option>
+                            <option>Selling</option>
+                        </select>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search for an item...">
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-9 col-lg-9">
+                <h2>Browse</h2>
+                <div class="list-group">
+                    <div class="list-group-item">
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <img class="media-object" src="img/dummy-small.png" alt="Thumbnail">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Ad Title</h4>
+                                <h5><a href="#">Computer Accessories</a> <span class="label label-info">Selling</span></h5>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            </div>
+                            <div class="media-right media-top">
+                                <h4 class="media-heading media-right">$9,999</h4>
+                                <h5 class="text-right" style="font-size:12px">01/01/2018</h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <img class="media-object" src="img/dummy-small.png" alt="Image">
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">Ad Title</h4>
+                                <h5><a href="#">Computer Accessories</a> <span>01/01/2018</span></h5>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                            </div>
+                            <div class="media-right media-top">
+                                <h4 class="media-heading">$9,999</h4>
+                                <span class="label label-info">Buying</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination. -->
+                <div class="text-center">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">4</a></li>
+                            <li><a href="#">5</a></li>
+                            <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <h2>Filter</h2>
+                <br>
+                <form>
+                    <div class="form-group">
+                        <label for="ads">Ad Type</label>
+                        <select class="form-control" id="ads">
+                            <option>All</option>
+                            <option>Buying</option>
+                            <option>Selling</option>
+                        </select>
+                    </div>
+                    <!--<div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Option
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                Option
+                            </label>
+                        </div>
+                    </div>-->
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/jquery-3.2.1.min.js"></script>
+    <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>

@@ -1,3 +1,7 @@
+.navbar-toggle {
+    padding: 6px 12px;
+}
+
 .jumbotron {
     margin-top: -20px;
     background-size: cover;
@@ -5,8 +9,14 @@
     background-image: url('../img/electronics.jpeg');
 }
 
-.jumbotron h1, .jumbotron h2 {
+.jumbotron h1, 
+.jumbotron h2, 
+.jumbotron p {
     color: #FFFFFF;
+}
+
+.media-object {
+    max-width: 80px !important; 
 }
 
 /*#23b04b*/
