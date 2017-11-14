@@ -14,49 +14,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">TechExchange</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Browse</a></li>
-                    <li><a href="#">Buy</a></li> <!-- Add class=active. -->
-                    <li><a href="#">Sell</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Sign In</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">                            
-                        <select class="form-control">
-                            <option>All</option>
-                            <option>Buying</option>
-                            <option>Selling</option>
-                        </select>
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for an item...">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </nav>
+    <?php include('reuse/navbar.php'); ?>
 
     <div class="container">
         <div class="row">
@@ -84,14 +42,17 @@
                         </div>
                         <span id="passwordHelp" class="help-block"></span>
                     </div>
-                    <div class="checkbox">
+                    <!--<div class="checkbox">
                         <label>
                             <input type="checkbox"> Remember me
                         </label>
-                    </div>
+                    </div>-->
                     <button type="submit" class="btn btn-success btn-lg">Sign In</button>
                 </form>
                 <br>
+                <p>
+                    <a href="register.php">Don't have an account? Register today.</a>
+                </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <img class="img-responsive img-rounded" src="img/desk.jpeg" alt="Keyboard">

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TechExchange | Post Ad</title>
+    <title>TechExchange | Ad</title>
 
     <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
@@ -14,45 +14,7 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed btn" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                    <!--<span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>-->
-                </button>
-                <a class="navbar-brand" href="#">TechExchange</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Browse</a></li>
-                    <li><a href="#">Buy</a></li> <!-- Add class=active. -->
-                    <li><a href="#">Sell</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Sign In</a></li>
-                </ul>
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for an item...">
-                            <span class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                                </button>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </nav>
+    <?php include('reuse/navbar.php'); ?>
 
     <div class="container">
         <form>
