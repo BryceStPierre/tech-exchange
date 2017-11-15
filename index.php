@@ -47,22 +47,6 @@
                         <!--<a href="#" class="list-group-item">
                             <span class="badge">374</span>
                             Laptops, PCs
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge">200</span>
-                            TVs, Monitors
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge">293</span>
-                            Modems, Routers
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge">40</span>
-                            Computer Accessories
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <span class="badge">39</span>
-                            Video Game Consoles
                         </a>-->
                     </div>
                 </div>

@@ -86,22 +86,6 @@
                                 <img class="media-object" src="img/dummy-small.png" alt="Thumbnail">
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading"><a href="#">Ad Title</a></h4>
-                                <h5>Computer Accessories <span class="label label-info">Selling</span></h5>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            </div>
-                            <div class="media-right media-top">
-                                <h4 class="media-heading media-right">$9,999</h4>
-                                <h5 class="text-right" style="font-size:12px">01/01/2018</h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="media">
-                            <div class="media-left media-top">
-                                <img class="media-object" src="img/dummy-small.png" alt="Thumbnail">
-                            </div>
-                            <div class="media-body">
                                 <h4 class="media-heading">Ad Title</h4>
                                 <h5><a href="#">Computer Accessories</a> <span class="label label-info">Selling</span></h5>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
@@ -137,7 +121,7 @@
                     <div class="form-group">
                         <label for="type">Ad Type</label>
                         <select class="form-control" name="type" id="type">
-                            <option value="2">Both</option>
+                            <option value="2">Any</option>
                             <option value="0">Selling</option>
                             <option value="1">Buying</option>
                         </select>
@@ -145,7 +129,7 @@
                     <div class="form-group">
                         <label for="category">Category</label>
                         <select class="form-control" name="category" id="category">
-                            <option value="0">All</option>
+                            <option value="0">Any</option>
                             <?php 
                                 $cats = $db->query("SELECT * FROM categories ORDER BY label ASC");
                                 foreach($cats as $cat): ?>
