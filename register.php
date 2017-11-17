@@ -41,6 +41,9 @@
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
                 <br>
+                <p>
+                    <a href="signin.php">Already have an account? Sign in now.</a>
+                </p>
             </div>
             <div class="col-sm-8 col-md-8 col-lg-6">
                 <img class="img-responsive img-rounded" src="img/keyboard.jpeg" alt="Keyboard">

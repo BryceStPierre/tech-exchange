@@ -23,9 +23,8 @@
             case 5: array_push($conditions, "price >= 2500"); break;
         }
     }
-    if ($type != 2) {
+    if ($type != 2)
         array_push($conditions, "type = $type");
-    }
 
     if (sizeof($conditions) > 0)
         $query .= " WHERE " . implode(" AND ", $conditions);
@@ -54,8 +53,8 @@
         <div class="row">
             <div class="col-sm-9 col-md-10 col-lg-10">
                 <h2>Browse</h2>
+                <h4 id="search-label"></h4>
                 <div class="list-group">
-
                     <?php foreach($ads as $ad): ?>
                     <?php $cat = $db->query("SELECT label FROM categories WHERE id = " . $ad['category_id'])[0]['label']; ?>
                     <div class="list-group-item">
@@ -70,11 +69,25 @@
                                 </h4>
                                 <?php $label = ($ad['type'] === 0) ? "Buying" : "Selling"; ?>
                                 <h5><?php echo $cat; ?> <span class="label label-info"><?php echo $label; ?></span></h5>
-                                <p><?php echo $ad['description']; ?></p>
+                                <p>
+                                    <?php 
+                                        if (strlen($ad['description']) < 120)
+                                            echo $ad['description'];
+                                        else {
+                                            echo substr($ad['description'], 0, 120);
+                                            echo '...<br><a href="ad.php?id=' . $ad['id'] . '">Read more.</a>';
+                                        }
+                                    ?>
+                                </p>
                             </div>
                             <div class="media-right media-top">
-                                <h4 class="media-heading media-right"><?php echo $ad['price']; ?></h4>
-                                <h5 class="text-right" style="font-size:12px"><?php echo $ad['date']; ?></h5>
+                                <h4 class="media-heading media-right"><?php echo "$" . number_format($ad['price']); ?></h4>
+                                <h5 class="text-right" style="font-size: 12px">
+                                    <?php 
+                                        $date = strtotime($ad['date']);
+                                        echo date("n/j/Y", $date); 
+                                    ?>    
+                                </h5>
                             </div>
                         </div>
                     </div>
@@ -160,5 +173,6 @@
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script src="js/ui.js"></script>
+    <script src="js/browse.js"></script>
 </body>
 </html>

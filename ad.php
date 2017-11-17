@@ -1,3 +1,20 @@
+<?php
+    include('server/database.php');
+    
+    $db = new Database();
+
+    if (isset($_GET['id']))
+        $id = $_GET['id'];
+    else
+        header("Location: browse.php");
+
+    $results = $db->query("SELECT * FROM ads WHERE id = $id");
+
+    if (count($results) > 0)
+        $data = $results[0];
+    else
+        header("Location: browse.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TechExchange | Ad</title>
+    <title>TechExchange | <?php echo $data['title']; ?></title>
 
     <link href="img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
@@ -23,8 +40,10 @@
                     <div class="list-group">
                         <div class="list-group-item">
                             <h3 class="list-group-item-heading">
-                                Xbox 360 <span class="label label-info">Selling</span>
+                                <?php echo $data['title']; ?> <span class="label label-info">Selling</span>
                             </h3>
+                            <?php echo $data['title']; ?>
+                            <?php $cat = $db->query("SELECT label FROM categories WHERE id = " . $ad['category_id'])[0]['label']; ?>
                             <a href="#" class="list-group-item-heading">Category</a>
                         </div>
                         
@@ -51,18 +70,23 @@
                         </div>
                         <div class="list-group-item">
                             <i class="fa fa-usd" aria-hidden="true"></i> <span>9,999</span>
+                            <?php ?>
                         </div>
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-time"></span> <span>01/01/2018</span>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span>01/01/2018</span>
+                            <?php ?>
                         </div>
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-earphone"></span> <span>(999) 999-9999</span>
+                            <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <span>(999) 999-9999</span>
+                            <?php ?>
                         </div>
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-envelope"></span> <span>example@example.com</span>
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <span>example@example.com</span>
+                            <?php ?>
                         </div>
                         <div class="list-group-item text-center">
-                            <a href="#" class="btn btn-primary btn-xs">Contact</a>
+                            <a href="mailto: " class="btn btn-primary btn-xs">Contact</a>
+                            <a href="#" class="btn btn-danger btn-xs">Report</a>
                         </div>
                     </div>
                 </div>
@@ -72,5 +96,6 @@
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/ui.js"></script>
 </body>
 </html>

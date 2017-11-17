@@ -4,7 +4,6 @@
     $db = new Database();
     $cats = $db->query("SELECT id, label, total FROM (SELECT COUNT(category_id) AS total, category_id FROM ads GROUP BY category_id) x INNER JOIN (SELECT id, label FROM categories) y ON x.category_id = y.id ORDER BY total DESC LIMIT 5");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,5 +55,6 @@
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/ui.js"></script>
 </body>
 </html>

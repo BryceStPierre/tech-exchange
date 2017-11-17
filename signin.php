@@ -24,7 +24,7 @@
                 <form>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group">
                             <span class="input-group-addon" id="addon1">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                             </span>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <div class="input-group input-group-lg">
+                        <div class="input-group">
                             <span class="input-group-addon" id="addon2">
                                 <i class="fa fa-key" aria-hidden="true"></i>
                             </span>
@@ -47,7 +47,7 @@
                             <input type="checkbox"> Remember me
                         </label>
                     </div>-->
-                    <button type="submit" class="btn btn-success btn-lg">Sign In</button>
+                    <button type="submit" class="btn btn-success">Sign In</button>
                 </form>
                 <br>
                 <p>
