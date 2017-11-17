@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +20,7 @@
     <?php include('reuse/navbar.php'); ?>
 
     <div class="container">
-        <form>
+        <form action="server/postAd.php" method="post">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2 class="text-center">Post Ad</h2>
@@ -27,16 +30,16 @@
                 <div class="col-sm-4 col-md-4 col-lg-4">                    
                     <div class="form-group">
                         <label for="title">Item Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Item Title">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Item Title">
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="ad">Ad Type</label>
-                                <select class="form-control" id="ad">
-                                    <option>Buying</option>
-                                    <option>Selling</option>
+                                <label for="type">Ad Type</label>
+                                <select class="form-control" name="type" id="type">
+                                    <option value="0">Selling</option>
+                                    <option value="1">Buying</option>
                                 </select>
                             </div>
                         </div>
@@ -44,7 +47,7 @@
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label for="category">Item Category</label>
-                                <select class="form-control" id="category">
+                                <select class="form-control" name="category" id="category">
                                     <option>Any</option>
                                     <option>PCs, Laptops</option>
                                     <option>TVs, Monitors</option>

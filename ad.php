@@ -40,23 +40,16 @@
                     <div class="list-group">
                         <div class="list-group-item">
                             <h3 class="list-group-item-heading">
-                                <?php echo $data['title']; ?> <span class="label label-info">Selling</span>
+                                <?php echo $data['title']; ?> 
+                                <span class="label label-info"><?php echo ($data['type'] == 0) ? 'Selling' : 'Buying'; ?></span>
                             </h3>
-                            <?php echo $data['title']; ?>
-                            <?php $cat = $db->query("SELECT label FROM categories WHERE id = " . $ad['category_id'])[0]['label']; ?>
-                            <a href="#" class="list-group-item-heading">Category</a>
+                            <?php $cat = $db->query("SELECT label FROM categories WHERE id = " . $data['category_id'])[0]['label']; ?>
+                            <a href="browse.php?category=<?php echo $data['category_id']; ?>" class="list-group-item-heading"><?php echo $cat; ?></a>
                         </div>
                         
                         <div class="list-group-item">
                             <h4 class="list-group-item-heading">Description</h4>
-                            <p class="list-group-item-text">Lorem Ipsum is simply dummy text of the printing and 
-                                typesetting industry. Lorem Ipsum has been the industry's standard dummy text 
-                                ever since the 1500s, when an unknown printer took a galley of type and scrambled 
-                                it to make a type specimen book. It has survived not only five centuries, but 
-                                also the leap into electronic typesetting, remaining essentially unchanged. It 
-                                was popularised in the 1960s with the release of Letraset sheets containing Lorem 
-                                Ipsum passages, and more recently with desktop publishing software like Aldus 
-                                PageMaker including versions of Lorem Ipsum.</p>
+                            <p class="list-group-item-text"><?php echo $data['description']; ?></p>
                         </div>
                     </div>
                 </div>
@@ -69,23 +62,26 @@
                             </p>
                         </div>
                         <div class="list-group-item">
-                            <i class="fa fa-usd" aria-hidden="true"></i> <span>9,999</span>
-                            <?php ?>
+                            <i class="fa fa-usd" aria-hidden="true"></i> 
+                            <?php echo number_format($data['price']); ?>
                         </div>
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <span>01/01/2018</span>
-                            <?php ?>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                            <?php
+                                $date = strtotime($data['date']);
+                                echo date("n/j/Y", $date); 
+                            ?>
                         </div>
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> <span>(999) 999-9999</span>
-                            <?php ?>
+                            <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                            <?php echo $data['telephone']; ?>
                         </div>
                         <div class="list-group-item">
-                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <span>example@example.com</span>
-                            <?php ?>
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            <?php echo $data['email']; ?>
                         </div>
                         <div class="list-group-item text-center">
-                            <a href="mailto: " class="btn btn-primary btn-xs">Contact</a>
+                            <a href="mailto:<?php echo $data['email']; ?>" class="btn btn-primary btn-xs">Contact</a>
                             <a href="#" class="btn btn-danger btn-xs">Report</a>
                         </div>
                     </div>

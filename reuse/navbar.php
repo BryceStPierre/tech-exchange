@@ -12,8 +12,8 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li id="navbar-browse"><a href="browse.php">Browse</a></li>
-                <li id="navbar-buy"><a href="post.php?type=buying">Buy</a></li> <!-- Add class=active. -->
-                <li id="navbar-sell"><a href="post.php?type=selling">Sell</a></li>
+                <li id="navbar-sell"><a href="post.php?type=0">Sell</a></li>
+                <li id="navbar-buy"><a href="post.php?type=1">Buy</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="#">FAQ</a></li>-->

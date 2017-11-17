@@ -7,9 +7,9 @@ $(function () {
     if (filename !== '') {
         if (filename === 'browse.php')
             $('#navbar-browse').addClass('active');
-        else if (filename === 'post.php' && window.location.search === '?type=buying')
-            $('#navbar-buy').addClass('active');
-        else if (filename === 'post.php' && window.location.search === '?type=selling')
+        else if (filename === 'post.php' && window.location.search === '?type=0')
             $('#navbar-sell').addClass('active');
+        else if (filename === 'post.php' && window.location.search === '?type=1')
+            $('#navbar-buy').addClass('active');
     }
 });
