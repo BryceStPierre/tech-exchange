@@ -1,5 +1,9 @@
 <?php
+    include('server/database.php');
+    
+    $db = new Database();
 
+    $cats = $db->query("SELECT label FROM categories GROUP BY label ASC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +24,7 @@
     <?php include('reuse/navbar.php'); ?>
 
     <div class="container">
-        <form action="server/postAd.php" method="post">
+        <form action="server/postAction.php" method="post">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2 class="text-center">Post Ad</h2>
@@ -29,14 +33,14 @@
             <div class="row">
                 <div class="col-sm-4 col-md-4 col-lg-4">                    
                     <div class="form-group">
-                        <label for="title">Item Title</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Item Title">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Title">
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="type">Ad Type</label>
+                                <label for="type">Type</label>
                                 <select class="form-control" name="type" id="type">
                                     <option value="0">Selling</option>
                                     <option value="1">Buying</option>
@@ -46,46 +50,48 @@
 
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
-                                <label for="category">Item Category</label>
+                                <label for="category">Category</label>
                                 <select class="form-control" name="category" id="category">
-                                    <option>Any</option>
-                                    <option>PCs, Laptops</option>
-                                    <option>TVs, Monitors</option>
-                                    <option>Computer Accessories</option>
+                                    <!--<option>Any</option>-->
+                                    <!--<option>TVs, Monitors</option>
+                                    <option>Computer Accessories</option>-->
+                                    <?php foreach ($cats as $cat): ?>
+                                        <option><?php echo $cat['label']; ?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Item Description</label>
-                        <textarea rows="5" class="form-control" id="description" placeholder="Item Description"></textarea>
+                        <label for="description">Description</label>
+                        <textarea rows="5" class="form-control" name="description" id="description" placeholder="Description"></textarea>
                     </div>
                 </div>
 
                 <div class="col-md-4 col-lg-4">
                     <div class="form-group">
-                        <label for="price">Item Price</label>
-                        <div class="input-group">
+                        <label for="price">Price</label>
+                        <div class="input-group" id="price-group">
                             <div class="input-group-addon">$</div>
-                            <input type="text" class="form-control" id="price" placeholder="Amount">
+                            <input type="text" class="form-control" name="price" id="price" placeholder="Amount">
                             <div class="input-group-addon">.00</div>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionPrice" id="option1" value="option1" checked>
+                                <input type="radio" name="priceOption" id="option1" value="1" checked>
                                 Price
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionPrice" id="option2" value="option2">
+                                <input type="radio" name="priceOption" id="option2" value="0">
                                 Free
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionPrice" id="option3" value="option3">
+                                <input type="radio" name="priceOption" id="option3" value="-1">
                                 Contact
                             </label>
                         </div>
@@ -96,7 +102,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-earphone"></span>
                                 </div>
-                                <input type="text" class="form-control" id="telephone" placeholder="Telephone">
+                                <input type="text" class="form-control" name="telephone" id="telephone" placeholder="Telephone">
                             </div>
                         </div>
                         <div class="form-group">
@@ -105,53 +111,25 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-envelope"></span>
                                 </div>
-                                <input type="text" class="form-control" id="email" placeholder="Email Address">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Email Address">
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-sm-4 col-md-4 col-lg-4">
-                    <img class="img-responsive img-rounded" src="img/dummy.png" alt="Image">
+                    <img class="img-responsive img-rounded" src="img/dummy.png" id="image-preview" alt="Image">
                     <br>
                     <div class="form-group">
-                        <label for="image">Item Image</label>
-                        <input name="image" id="image" type="file">
+                        <label for="image">Image</label>
+                        <input type="file" name="image" id="image">
                     </div>
-                    <!--<div class="form-group">
-
-                        <div class="input-group">
-                            <span class="input-group-addon" id="addon1">
-                                <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-                            </span>
-                            <input type="text" class="form-control" id="image" placeholder="External Image URL" aria-describedby="addon1">
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionImage" id="optionImage1" value="option1" checked>
-                                Upload Image
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionImage" id="optionImage2" value="option2" checked>
-                                External URL
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="optionImage" id="optionImage3" value="option3">
-                                No Image
-                            </label>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary">Preview</button>-->
                 </div>
 
             </div>
             <p class="text-center">
                 <button type="submit" class="btn btn-primary">Post Ad</button>
-                <button class="btn btn-danger">Cancel</button>
+                <a href="#" class="btn btn-danger">Cancel</a>
             </p>
         </form>
     </div>
@@ -159,5 +137,6 @@
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script src="js/ui.js"></script>
+    <script src="js/post.js"></script>
 </body>
 </html>

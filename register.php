@@ -21,22 +21,22 @@
             <div class="col-sm-4 col-md-4 col-lg-6">
                 <h1>Register</h1>
                 <br>
-                <form>
+                <form action="server/registerAction.php" method="post">
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" class="form-control" id="email" placeholder="Email Address">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
                     </div>
                     <div class="form-group">
                         <label for="username">Display Name</label>
-                        <input type="text" class="form-control" id="display" placeholder="Display Name">
+                        <input type="text" class="form-control" name="display" id="display" placeholder="Display Name">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <label for="confirm">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirm" placeholder="Confirm Password">
+                        <input type="password" class="form-control" id="confirmed" placeholder="Confirm Password">
                     </div>
                     <button type="submit" class="btn btn-primary">Register</button>
                 </form>
