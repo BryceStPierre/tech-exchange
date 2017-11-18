@@ -14,31 +14,36 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <?php include('reuse/navbar.php'); ?>
+    <?php 
+        include('reuse/navbar.php'); 
 
+        if ($_SESSION['signed_in'])
+            header('Location: /tech-exchange');
+    ?>
     <div class="container">
         <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-6">
                 <h1>Register</h1>
-                <br>
                 <form action="server/registerAction.php" method="post">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address">
+                    <div class="form-group" id="emailGroup">
+                        <label class="control-label" for="email">Email Address</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required>
+                        <span class="help-block" id="emailBlock"></span>
                     </div>
                     <div class="form-group">
-                        <label for="username">Display Name</label>
-                        <input type="text" class="form-control" name="display" id="display" placeholder="Display Name">
+                        <label class="control-label" for="username">Display Name</label>
+                        <input type="text" class="form-control" name="display" id="display" placeholder="Display Name" required>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                    <div class="form-group" id="passwordGroup">
+                        <label class="control-label" for="password">Password</label>
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                     </div>
-                    <div class="form-group">
-                        <label for="confirm">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirmed" placeholder="Confirm Password">
+                    <div class="form-group" id="confirmedGroup">
+                        <label class="control-label" for="confirmed">Confirm Password</label>
+                        <input type="password" class="form-control" name="confirmed" id="confirmed" placeholder="Confirm Password" required>
+                        <span class="help-block" id="confirmedBlock"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary" id="register">Register</button>
                 </form>
                 <br>
                 <p>
@@ -53,5 +58,6 @@
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/register.js"></script>
 </body>
 </html>

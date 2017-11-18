@@ -92,27 +92,10 @@
                         </div>
                     </div>
                     <?php endforeach; ?>
-
-                    <!--<div class="list-group-item">
-                        <div class="media">
-                            <div class="media-left media-top">
-                                <img class="media-object" src="img/dummy-small.png" alt="Thumbnail">
-                            </div>
-                            <div class="media-body">
-                                <h4 class="media-heading">Ad Title</h4>
-                                <h5><a href="#">Computer Accessories</a> <span class="label label-info">Selling</span></h5>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-                            </div>
-                            <div class="media-right media-top">
-                                <h4 class="media-heading media-right">$9,999</h4>
-                                <h5 class="text-right" style="font-size:12px">01/01/2018</h5>
-                            </div>
-                        </div>
-                    </div>-->
                 </div>
 
                 <!-- Pagination. -->
-                <div class="text-center">
+                <!--<div class="text-center">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
                             <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -124,13 +107,16 @@
                             <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
                         </ul>
                     </nav>
-                </div>
+                </div>-->
 
             </div>
             <div class="col-sm-3 col-md-2 col-lg-2">
                 <h2>Filter</h2>
                 <br>
                 <form action="browse.php">
+                    <?php if (isset($_GET['search'])): ?>
+                    <input type="hidden" name="search" value="<?php echo htmlspecialchars($_GET['search']); ?>">
+                    <?php endif; ?>
                     <div class="form-group">
                         <label for="type">Ad Type</label>
                         <select class="form-control" name="type" id="type">

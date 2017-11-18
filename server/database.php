@@ -16,14 +16,13 @@ class Database
     function query ($string) {
         $result = mysqli_query($this->connection, $string);
         $rows = [];
-
-        if (!$result) {
-            echo 'MySQL error: ' . mysql_error();
-            exit;
-        }
+        
+        if (!$result)
+            return 0;
+            
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
             array_push($rows, $row);
-            
+
         mysqli_free_result($result);
         return $rows;
     }
@@ -32,5 +31,4 @@ class Database
         mysqli_close($this->connection);
     }
 }
-
 ?>

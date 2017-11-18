@@ -10,5 +10,5 @@
     $result = $db->insert($query);
 
     $message = $result ? 'success' : 'error';
-    header("Location: ../signin.php?message=$message");
+    header("Location: ../browse.php?message=$message");
 ?>

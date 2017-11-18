@@ -31,7 +31,9 @@
                         are sure to impress you. Begin selling and buying items today.</p>
                     <p>
                         <a class="btn btn-primary btn-lg" href="post.php" role="button">Post Ad</a>
+                    <?php if (!$_SESSION['signed_in']): ?>
                         <a class="btn btn-default btn-lg" href="register.php" role="button">Register</a>
+                    <?php endif; ?>
                     </p>
                 </div>
                 <div class="col-sm-6 col-md-4 col-lg-4">
@@ -43,10 +45,6 @@
                             <?php echo $cat['label']; ?>
                         </a>
                         <?php endforeach; ?>
-                        <!--<a href="#" class="list-group-item">
-                            <span class="badge">374</span>
-                            Laptops, PCs
-                        </a>-->
                     </div>
                 </div>
             </div>

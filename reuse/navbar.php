@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+    if (!array_key_exists('signed_in', $_SESSION))
+        $_SESSION['signed_in'] = FALSE;
+?>
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -17,7 +22,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="#">FAQ</a></li>-->
-                <li><a href="signin.php">Sign In</a></li>
+                <?php if ($_SESSION['signed_in'] == TRUE): ?>
+                    <li><a href="#"><?php echo $_SESSION['user']['name']; ?></a></li>
+                    <li><a href="server/signoutAction.php"><span class="glyphicon glyphicon-off"></span></a></li>
+                <?php else: ?>
+                    <li><a href="signin.php">Sign In</a></li>
+                <?php endif; ?>
             </ul>
             <form action="browse.php" class="navbar-form navbar-right">
                 <div class="form-group">

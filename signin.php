@@ -14,21 +14,24 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <?php include('reuse/navbar.php'); ?>
+    <?php 
+        include('reuse/navbar.php'); 
 
+        if ($_SESSION['signed_in'])
+            header('Location: /tech-exchange');
+    ?>
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <h1>Sign In</h1>
-                <br>
-                <form>
+                <form action="server/signinAction.php" method="post">
                     <div class="form-group">
                         <label for="email">Email Address</label>
                         <div class="input-group">
                             <span class="input-group-addon" id="addon1">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                             </span>
-                            <input type="text" class="form-control" id="email" placeholder="Email Address" aria-describedby="addon1">
+                            <input type="text" class="form-control" name="email" id="email" placeholder="Email Address" aria-describedby="addon1" required>
                         </div>
                         <span id="emailHelp" class="help-block"></span>
                     </div>
@@ -38,15 +41,9 @@
                             <span class="input-group-addon" id="addon2">
                                 <i class="fa fa-key" aria-hidden="true"></i>
                             </span>
-                            <input type="password" class="form-control" id="password" placeholder="Password" aria-describedby="addon2">
+                            <input type="password" class="form-control" name="password" id="password" placeholder="Password" aria-describedby="addon2" required>
                         </div>
-                        <span id="passwordHelp" class="help-block"></span>
                     </div>
-                    <!--<div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Remember me
-                        </label>
-                    </div>-->
                     <button type="submit" class="btn btn-success">Sign In</button>
                 </form>
                 <br>
@@ -55,7 +52,7 @@
                 </p>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
-                <img class="img-responsive img-rounded" src="img/desk.jpeg" alt="Keyboard">
+                <img class="img-responsive img-rounded" src="img/desk.jpeg" alt="Desk">
             </div>
         </div>
     </div>
