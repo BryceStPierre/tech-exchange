@@ -1,9 +1,8 @@
 <?php
     include('server/database.php');
-    
     $db = new Database();
 
-    $cats = $db->query("SELECT label FROM categories GROUP BY label ASC");
+    $cats = $db->query("SELECT * FROM categories GROUP BY label ASC");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,10 +20,14 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <?php include('reuse/navbar.php'); ?>
+    <?php 
+        include('reuse/navbar.php'); 
 
+        if (!$_SESSION['signed_in'])
+            header('Location: signin.php?signin=please');
+    ?>
     <div class="container">
-        <form action="server/postAction.php" method="post">
+        <form action="server/postAction.php" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <h2 class="text-center">Post Ad</h2>
@@ -34,7 +37,7 @@
                 <div class="col-sm-4 col-md-4 col-lg-4">                    
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                        <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
                     </div>
 
                     <div class="row">
@@ -51,12 +54,9 @@
                         <div class="col-md-6 col-lg-6">
                             <div class="form-group">
                                 <label for="category">Category</label>
-                                <select class="form-control" name="category" id="category">
-                                    <!--<option>Any</option>-->
-                                    <!--<option>TVs, Monitors</option>
-                                    <option>Computer Accessories</option>-->
+                                <select class="form-control" name="category" id="category" required>
                                     <?php foreach ($cats as $cat): ?>
-                                        <option><?php echo $cat['label']; ?></option>
+                                        <option value="<?php echo $cat['id']; ?>"><?php echo $cat['label']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -65,7 +65,7 @@
 
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <textarea rows="5" class="form-control" name="description" id="description" placeholder="Description"></textarea>
+                        <textarea rows="5" class="form-control" name="description" id="description" placeholder="Description" required></textarea>
                     </div>
                 </div>
 
@@ -79,19 +79,19 @@
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="priceOption" id="option1" value="1" checked>
+                                <input type="radio" name="price-option" id="option1" value="1" checked>
                                 Price
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="priceOption" id="option2" value="0">
+                                <input type="radio" name="price-option" id="option2" value="0">
                                 Free
                             </label>
                         </div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="priceOption" id="option3" value="-1">
+                                <input type="radio" name="price-option" id="option3" value="-1">
                                 Contact
                             </label>
                         </div>
@@ -102,7 +102,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-earphone"></span>
                                 </div>
-                                <input type="text" class="form-control" name="telephone" id="telephone" placeholder="Telephone">
+                                <input type="text" class="form-control" name="telephone" id="telephone" placeholder="Telephone" required>
                             </div>
                         </div>
                         <div class="form-group">
@@ -111,7 +111,7 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-envelope"></span>
                                 </div>
-                                <input type="text" class="form-control" name="email" id="email" placeholder="Email Address">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Email Address" required>
                             </div>
                         </div>
                     </div>
@@ -122,7 +122,7 @@
                     <br>
                     <div class="form-group">
                         <label for="image">Image</label>
-                        <input type="file" name="image" id="image">
+                        <input type="file" name="image" id="image" accept="image/*">
                     </div>
                 </div>
 

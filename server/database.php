@@ -6,6 +6,9 @@ class Database
 
     function __construct () {
         $this->connection = mysqli_connect("localhost", "stpierrb_db", "stpierrb123", "stpierrb_db");
+
+        if (mysqli_connect_errno())
+            die("MySQL connection failed: " . mysqli_connect_error());
     }
 
     function insert ($string) {

@@ -56,11 +56,13 @@
 
                 <div class="col-sm-4 col-md-4 col-lg-4">
                     <div class="list-group">
+                    <?php if ($data['image']): ?>
                         <div class="list-group-item">
                             <p class="text-center">
-                                <img class="img-responsive img-rounded" src="img/dummy.png" alt="Ad Image">
+                                <img class="img-responsive img-rounded" src="data:image/jpeg;base64,<?php echo base64_encode( $data['image']); ?>" alt="Image">
                             </p>
                         </div>
+                    <?php endif; ?>
                         <div class="list-group-item">
                             <i class="fa fa-usd" aria-hidden="true"></i> 
                             <?php echo number_format($data['price']); ?>

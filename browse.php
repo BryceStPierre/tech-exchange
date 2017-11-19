@@ -53,6 +53,10 @@
         <div class="row">
             <div class="col-sm-9 col-md-10 col-lg-10">
                 <h2>Browse</h2>
+            <?php if (count($ads) == 0): ?>
+                <br>
+                <h4>Sorry, no ads found.</h4>
+            <?php endif; ?>
                 <h4 id="search-label"></h4>
                 <div class="list-group">
                     <?php foreach($ads as $ad): ?>
@@ -60,8 +64,9 @@
                     <div class="list-group-item">
                         <div class="media">
                             <div class="media-left media-top">
-                                <!-- Update image processing. -->
-                                <img class="media-object" src="img/dummy-small.png" alt="Thumbnail">
+                            <?php if ($ad['image']): ?>
+                                <img class="media-object" src="data:image/jpeg;base64,<?php echo base64_encode($ad['image']); ?>" alt="Thumbnail">
+                            <?php endif; ?>
                             </div>
                             <div class="media-body">
                                 <h4 class="media-heading">
@@ -81,8 +86,17 @@
                                 </p>
                             </div>
                             <div class="media-right media-top">
-                                <h4 class="media-heading media-right"><?php echo "$" . number_format($ad['price']); ?></h4>
-                                <h5 class="text-right" style="font-size: 12px">
+                                <h4 class="media-heading media-right">
+                                    <?php 
+                                        if ($ad['price'] == -1)
+                                            echo 'Contact';
+                                        elseif ($ad['price'] == 0)
+                                            echo 'Free';
+                                        else
+                                            echo "$" . number_format($ad['price']);
+                                    ?>
+                                </h4>
+                                <h5 class="text-right" style="font-size:12px">
                                     <?php 
                                         $date = strtotime($ad['date']);
                                         echo date("n/j/Y", $date); 

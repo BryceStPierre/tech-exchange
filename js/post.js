@@ -11,7 +11,7 @@ $(function () {
     if (parameters.type)
         $('#type').val(parameters.type);
 
-    $('input[type=radio][name="priceOption"]').change(function () {
+    $('input[type=radio][name="price-option"]').change(function () {
         $('#price-group').show();
         if ($(this).val() != 1)
             $('#price-group').hide();
