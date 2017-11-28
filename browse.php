@@ -133,7 +133,6 @@
                                 foreach($cats as $cat): ?>
                             <option value="<?php echo $cat['id']; ?>"><?php echo $cat['label']; ?></option>
                             <?php endforeach; ?>
-                            
                         </select>
                     </div>
                     <div class="form-group">
