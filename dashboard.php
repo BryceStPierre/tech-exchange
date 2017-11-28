@@ -20,23 +20,16 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1>Dashboard</h1>
-                <ul class="nav nav-tabs">
-                    <li role="presentation" class="active"><a href="#">Home</a></li>
-                    <li role="presentation"><a href="#">Profile</a></li>
-                    <li role="presentation"><a href="#">Messages</a></li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                    
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="profile">
-                    
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="messages">
-                    
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="settings">
-                    
+                <div>
+                    <!-- Tabs. -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#users" aria-controls="users" role="tab" data-toggle="tab">Users</a></li>
+                        <li role="presentation"><a href="#reports" aria-controls="reports" role="tab" data-toggle="tab">Reports</a></li>
+                    </ul>
+                    <!-- Tab content panes. -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="users">...</div>
+                        <div role="tabpanel" class="tab-pane" id="reports">...</div>
                     </div>
                 </div>
             </div>
@@ -47,5 +40,6 @@
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/dashboard.js"></script>
 </body>
 </html>
