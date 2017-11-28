@@ -108,21 +108,6 @@
                     <?php endforeach; ?>
                 </div>
 
-                <!-- Pagination. -->
-                <!--<div class="text-center">
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-                            <li class="active"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
-                        </ul>
-                    </nav>
-                </div>-->
-
             </div>
             <div class="col-sm-3 col-md-2 col-lg-2">
                 <h2>Filter</h2>
@@ -132,7 +117,7 @@
                     <input type="hidden" name="search" value="<?php echo htmlspecialchars($_GET['search']); ?>">
                     <?php endif; ?>
                     <div class="form-group">
-                        <label for="type">Ad Type</label>
+                        <label for="type">Type</label>
                         <select class="form-control" name="type" id="type">
                             <option value="2">Any</option>
                             <option value="0">Selling</option>
@@ -148,9 +133,7 @@
                                 foreach($cats as $cat): ?>
                             <option value="<?php echo $cat['id']; ?>"><?php echo $cat['label']; ?></option>
                             <?php endforeach; ?>
-                            <!--<option>All</option>
-                            <option>Video Games</option>
-                            <option>Computer Accessories</option>-->
+                            
                         </select>
                     </div>
                     <div class="form-group">
@@ -169,6 +152,8 @@
             </div>
         </div>
     </div>
+
+    <?php include('reuse/footer.php'); ?>
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>

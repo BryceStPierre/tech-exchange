@@ -4,6 +4,7 @@
 
 .jumbotron {
     margin-top: -20px;
+    margin-bottom: 0;
     background-size: cover;
     background-repeat: no-repeat;
     background-image: url('../img/electronics.jpeg');

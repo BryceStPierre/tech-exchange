@@ -55,6 +55,8 @@
             </div>
         </div>
     </div>
+    
+    <?php include('reuse/footer.php'); ?>
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
