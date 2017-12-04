@@ -1,3 +1,9 @@
+<?php
+    include('server/database.php');
+    $db = new Database();
+
+    $users = $db->query("SELECT * FROM users WHERE user_code != 1");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,8 +20,17 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    <?php include('reuse/navbar.php'); ?>
+    <?php 
+        include('reuse/navbar.php');
 
+        if (!$_SESSION['signed_in'])
+            header('Location: /tech-exchange');
+
+        if (array_key_exists('user_code', $_SESSION)) {
+            if ($_SESSION['user_code'] == 3)
+                header('Location: /tech-exchange');
+        }
+    ?>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -28,8 +43,45 @@
                     </ul>
                     <!-- Tab content panes. -->
                     <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="users">...</div>
-                        <div role="tabpanel" class="tab-pane" id="reports">...</div>
+                        <div role="tabpanel" class="tab-pane active" id="users">
+                            <br>
+                            <p>Promote users to become candidate administrator users.</p>
+                            <?php if (count($users) == 0): ?>
+                            <br>
+                            <p class="text-center">No users found.</p>
+                            <?php else: ?>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Joined</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    <?php foreach ($users as $user): ?>
+                                    <tr>
+                                        <td><?php echo $user['id']; ?></td>
+                                        <td><?php echo $user['name']; ?></td>
+                                        <td><?php echo $user['email']; ?></td>
+                                        <td><?php echo date("n/j/Y", strtotime($user['created_date'])); ?></td>
+                                        <td>
+                                            <button class="btn btn-default btn-xs">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                            </button>
+                                            <button class="btn btn-default btn-xs">
+                                                <span class="glyphicon glyphicon-warning-sign"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                </table>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="reports">
+                        
+                        </div>
                     </div>
                 </div>
             </div>
