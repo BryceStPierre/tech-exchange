@@ -3,6 +3,7 @@
     $db = new Database();
 
     $users = $db->query("SELECT * FROM users WHERE user_code != 1");
+    $ads = $db->query("SELECT * FROM ads WHERE reports > 0");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,8 +39,8 @@
                 <div>
                     <!-- Tabs. -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#users" aria-controls="users" role="tab" data-toggle="tab">Users</a></li>
-                        <li role="presentation"><a href="#reports" aria-controls="reports" role="tab" data-toggle="tab">Reports</a></li>
+                        <li role="presentation" class="active"><a href="#users" aria-controls="users" role="tab" data-toggle="tab">Manage Users</a></li>
+                        <li role="presentation"><a href="#reports" aria-controls="reports" role="tab" data-toggle="tab">Manage Reports</a></li>
                     </ul>
                     <!-- Tab content panes. -->
                     <div class="tab-content">
@@ -48,7 +49,8 @@
                             <p>Promote users to become candidate administrator users.</p>
                             <?php if (count($users) == 0): ?>
                             <br>
-                            <p class="text-center">No users found.</p>
+                            <p class="text-center"><b>No users found.</b></p>
+                            <br>
                             <?php else: ?>
                             <div class="table-responsive">
                                 <table class="table">
@@ -66,11 +68,11 @@
                                         <td><?php echo $user['email']; ?></td>
                                         <td><?php echo date("n/j/Y", strtotime($user['created_date'])); ?></td>
                                         <td>
-                                            <button class="btn btn-default btn-xs">
-                                                <span class="glyphicon glyphicon-thumbs-up"></span>
+                                            <button class="btn btn-success btn-xs">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span> Promote
                                             </button>
-                                            <button class="btn btn-default btn-xs">
-                                                <span class="glyphicon glyphicon-warning-sign"></span>
+                                            <button class="btn btn-danger btn-xs">
+                                                <span class="glyphicon glyphicon-warning-sign"></span> Report
                                             </button>
                                         </td>
                                     </tr>
@@ -80,7 +82,39 @@
                             <?php endif; ?>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="reports">
-                        
+                            <br>
+                            <p>Vote on whether recently reported ads are good or malicious.</p>
+                            <?php if (count($ads) == 0): ?>
+                            <br>
+                            <p class="text-center"><b>No reported ads found.</b></p>
+                            <br>
+                            <?php else: ?>
+                            <table class="table">
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Email</th>
+                                    <th>Price</th>
+                                    <th>Posted</th>
+                                    <th>Actions</th>
+                                </tr>
+                                <?php foreach ($ads as $ad): ?>
+                                <tr>
+                                    <td><a href="ad.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></td>
+                                    <td><?php echo $ad['email']; ?></td>
+                                    <td><?php echo $ad['price']; ?></td>
+                                    <td><?php echo date("n/j/Y", strtotime($ad['date'])); ?></td>
+                                    <td>
+                                        <button class="btn btn-success btn-xs">
+                                            <span class="glyphicon glyphicon-thumbs-up"></span> Good
+                                        </button>
+                                        <button class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-thumbs-down"></span> Malicious
+                                        </button>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </table>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

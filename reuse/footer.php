@@ -22,10 +22,10 @@
     </div>
     <hr>
     <div class="row">
-        <div class="col-lg-6 text-center">
+        <div class="col-sm-6 col-lg-6 text-center">
             <p>© 2017 TechExchange.</p>
         </div>
-        <div class="col-lg-6 text-center">
+        <div class="col-sm-6 col-md-6 col-lg-6 text-center">
             <p>Developed by Bryce St. Pierre.</p>
         </div>
     </div>
