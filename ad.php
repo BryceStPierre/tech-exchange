@@ -91,7 +91,7 @@
                         </div>
                         <div class="list-group-item text-center">
                             <a href="mailto:<?php echo $data['email']; ?>" class="btn btn-primary btn-xs">Contact</a>
-                            <a href="#" class="btn btn-danger btn-xs">Report</a>
+                            <a href="server/reportAction.php?redir=browse&report=up&id=<?php echo $data['id']; ?>" class="btn btn-danger btn-xs">Report</a>
                         </div>
                     </div>
                 </div>

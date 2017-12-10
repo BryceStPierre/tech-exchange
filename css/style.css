@@ -19,3 +19,11 @@
 .media-object {
     max-width: 80px !important; 
 }
+
+.text-white {
+    color: #FFF;
+}
+
+#footer {
+    background-color: #2C3E50;
+}

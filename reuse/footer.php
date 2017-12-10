@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color:#EEE">
+<div class="container-fluid" id="footer">
     <hr>
     <div class="row">
         <div class="col-md-4">
@@ -23,10 +23,10 @@
     <hr>
     <div class="row">
         <div class="col-sm-6 col-lg-6 text-center">
-            <p>© 2017 TechExchange.</p>
+            <p class="text-white">© 2017 TechExchange.</p>
         </div>
         <div class="col-sm-6 col-md-6 col-lg-6 text-center">
-            <p>Developed by Bryce St. Pierre.</p>
+            <p class="text-white">Developed by Bryce St. Pierre.</p>
         </div>
     </div>
 </div>

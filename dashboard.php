@@ -3,7 +3,6 @@
     $db = new Database();
 
     $users = $db->query("SELECT * FROM users WHERE user_code != 1");
-    $ads = $db->query("SELECT * FROM ads WHERE reports > 0");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +30,11 @@
             if ($_SESSION['user_code'] == 3)
                 header('Location: /tech-exchange');
         }
+
+        if ($_SESSION['user_code'] == 2)
+            $ads = $db->query("SELECT * FROM ads WHERE reports > 0");
+        else if ($_SESSION['user_code'] == 1)
+            $ads = $db->query("SELECT * FROM ads WHERE reports > 4");
     ?>
     <div class="container">
         <div class="row">
@@ -55,34 +59,34 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <tr>
-                                        <th>ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
+                                        <th>Votes</th>
                                         <th>Joined</th>
                                         <th>Actions</th>
                                     </tr>
                                     <?php foreach ($users as $user): ?>
                                     <?php if ($_SESSION['user_code'] == 2 && $user['user_code'] == 2) continue; ?>
                                     <tr>
-                                        <td><?php echo $user['id']; ?></td>
                                         <td><?php echo $user['name']; ?></td>
                                         <td><?php echo $user['email']; ?></td>
+                                        <td><?php echo $user['votes']; ?></td>
                                         <td><?php echo date("n/j/Y", strtotime($user['created_date'])); ?></td>
                                         <td>
                                             <?php if ($_SESSION['user_code'] == 1): ?>
-                                            <button class="btn btn-success btn-xs">
+                                            <a href="server/promoteUserAction.php?id=<?php echo $user['id']; ?>" class="btn btn-success btn-xs">
                                                 <span class="glyphicon glyphicon-hand-up"></span> Promote
-                                            </button>
-                                            <button class="btn btn-danger btn-xs">
+                                            </a>
+                                            <a href="server/deleteUserAction.php?id=<?php echo $user['id']; ?>" class="btn btn-danger btn-xs">
                                                 <span class="glyphicon glyphicon-trash"></span> Delete
-                                            </button>
+                                            </a>
                                             <?php else: ?>
-                                            <button class="btn btn-success btn-xs">
+                                            <a href="server/voteUserAction.php?vote=up&id=<?php echo $user['id']; ?>" class="btn btn-success btn-xs">
                                                 <span class="glyphicon glyphicon-thumbs-up"></span> Recommend
-                                            </button>
-                                            <button class="btn btn-danger btn-xs">
+                                            </a>
+                                            <a href="server/voteUserAction.php?vote=down&id=<?php echo $user['id']; ?>" class="btn btn-danger btn-xs">
                                                 <span class="glyphicon glyphicon-warning-sign"></span> Report
-                                            </button>
+                                            </a>
                                             <?php endif; ?>
                                         </td>
                                     </tr>
@@ -114,12 +118,18 @@
                                     <td><?php echo $ad['price']; ?></td>
                                     <td><?php echo date("n/j/Y", strtotime($ad['date'])); ?></td>
                                     <td>
-                                        <button class="btn btn-success btn-xs">
+                                        <?php if ($_SESSION['user_code'] == 1): ?>
+                                        <a href="server/deleteUserAction.php?id=<?php echo $ad['id']; ?>" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon-trash"></span> Delete
+                                        </a>
+                                        <?php else: ?>
+                                        <a href="server/reportAction.php?report=down&id=<?php echo $ad['id']; ?>" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-thumbs-up"></span> Good
-                                        </button>
-                                        <button class="btn btn-danger btn-xs">
+                                        </a>
+                                        <a href="server/reportAction.php?report=up&id=<?php echo $ad['id']; ?>" class="btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-thumbs-down"></span> Malicious
-                                        </button>
+                                        </a>
+                                        <?php endif; ?>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -136,6 +146,5 @@
 
     <script src="lib/jquery-3.2.1.min.js"></script>
     <script src="lib/bootstrap-3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/dashboard.js"></script>
 </body>
 </html>
