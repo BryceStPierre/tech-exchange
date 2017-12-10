@@ -64,8 +64,15 @@
                         </div>
                     <?php endif; ?>
                         <div class="list-group-item">
-                            <i class="fa fa-usd" aria-hidden="true"></i> 
-                            <?php echo number_format($data['price']); ?>
+                            <i class="fa fa-usd" aria-hidden="true"></i>
+                            <?php 
+                                if ($data['price'] == -1)
+                                    echo 'Contact';
+                                elseif ($data['price'] == 0)
+                                    echo 'Free';
+                                else
+                                    echo number_format($data['price']);
+                            ?>
                         </div>
                         <div class="list-group-item">
                             <span class="glyphicon glyphicon-time" aria-hidden="true"></span>

@@ -23,8 +23,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <!--<li><a href="#">FAQ</a></li>-->
                 <?php if ($_SESSION['signed_in'] == TRUE): ?>
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span>&emsp;<?php echo $_SESSION['user']['name']; ?></a></li>
-                    
+                    <li>
+                        <a href="profile.php"><span class="glyphicon glyphicon-user"></span>&emsp;<?php echo $_SESSION['user']['name']; ?></a>
+                    </li>
                     <?php if (array_key_exists('user_code', $_SESSION)): ?>
                         <?php if ($_SESSION['user_code'] == 1 || $_SESSION['user_code'] == 2): ?>
                             <li><a href="dashboard.php"><span class="glyphicon glyphicon-wrench"></span></a></li>

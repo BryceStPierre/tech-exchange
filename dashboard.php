@@ -62,18 +62,28 @@
                                         <th>Actions</th>
                                     </tr>
                                     <?php foreach ($users as $user): ?>
+                                    <?php if ($_SESSION['user_code'] == 2 && $user['user_code'] == 2) continue; ?>
                                     <tr>
                                         <td><?php echo $user['id']; ?></td>
                                         <td><?php echo $user['name']; ?></td>
                                         <td><?php echo $user['email']; ?></td>
                                         <td><?php echo date("n/j/Y", strtotime($user['created_date'])); ?></td>
                                         <td>
+                                            <?php if ($_SESSION['user_code'] == 1): ?>
                                             <button class="btn btn-success btn-xs">
-                                                <span class="glyphicon glyphicon-thumbs-up"></span> Promote
+                                                <span class="glyphicon glyphicon-hand-up"></span> Promote
+                                            </button>
+                                            <button class="btn btn-danger btn-xs">
+                                                <span class="glyphicon glyphicon-trash"></span> Delete
+                                            </button>
+                                            <?php else: ?>
+                                            <button class="btn btn-success btn-xs">
+                                                <span class="glyphicon glyphicon-thumbs-up"></span> Recommend
                                             </button>
                                             <button class="btn btn-danger btn-xs">
                                                 <span class="glyphicon glyphicon-warning-sign"></span> Report
                                             </button>
+                                            <?php endif; ?>
                                         </td>
                                     </tr>
                                     <?php endforeach; ?>
