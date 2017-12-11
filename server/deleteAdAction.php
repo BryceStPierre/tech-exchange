@@ -19,5 +19,8 @@
         header('Location: /tech-exchange');
 
     $db->query("DELETE FROM ads WHERE id = " . $_GET['id']);
-    header('Location: ../dashboard.php');
+    if ($_SESSION['user']['id'] == $owner)
+        header('Location: ../profile.php');
+    else
+        header('Location: ../dashboard.php');
 ?>

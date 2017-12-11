@@ -22,6 +22,19 @@
     ?>
     <div class="container">
         <div class="row">
+            <?php if (isset($_GET['signin'])): ?>
+            <?php if ($_GET['signin'] == 'error'): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Error!</strong> Incorrect email address or password. Try signing in again.
+            </div>
+            <?php elseif ($_GET['signin'] == 'please'): ?>
+            <div class="alert alert-info alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Please <strong>sign in</strong> to continue.
+            </div>
+            <?php endif; ?>
+            <?php endif; ?>
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <h1>Sign In</h1>
                 <form action="server/signinAction.php" method="post">

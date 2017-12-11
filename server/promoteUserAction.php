@@ -16,6 +16,6 @@
     if (!isset($_GET['id']))
         header('Location: ../dashboard.php');
 
-    $db->query("UPDATE users SET user_id=2 WHERE id = " . $_GET['id']);
+    $db->query("UPDATE users SET user_code=2 WHERE id = " . $_GET['id']);
     header('Location: ../dashboard.php');
 ?>

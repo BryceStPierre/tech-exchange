@@ -1,8 +1,6 @@
 <?php
     include('server/database.php');
     $db = new Database();
-
-    $users = $db->query("SELECT * FROM users WHERE user_code != 1");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,6 +29,8 @@
                 header('Location: /tech-exchange');
         }
 
+        $users = $db->query("SELECT * FROM users WHERE user_code != 1 AND id != " . $_SESSION['user']['id']);
+
         if ($_SESSION['user_code'] == 2)
             $ads = $db->query("SELECT * FROM ads WHERE reports > 0");
         else if ($_SESSION['user_code'] == 1)
@@ -38,6 +38,12 @@
     ?>
     <div class="container">
         <div class="row">
+            <?php if (isset($_GET['reported'])): ?>
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Ad report submitted successfully.
+            </div>
+            <?php endif; ?>
             <div class="col-lg-12">
                 <h1>Dashboard</h1>
                 <div>
@@ -50,7 +56,11 @@
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="users">
                             <br>
+                            <?php if ($_SESSION['user_code'] == 1): ?>
+                            <p>Upgrade users to administrators, or delete them, if necessary.</p>
+                            <?php else: ?>
                             <p>Promote users to become candidate administrator users.</p>
+                            <?php endif; ?>
                             <?php if (count($users) == 0): ?>
                             <br>
                             <p class="text-center"><b>No users found.</b></p>
@@ -66,7 +76,6 @@
                                         <th>Actions</th>
                                     </tr>
                                     <?php foreach ($users as $user): ?>
-                                    <?php if ($_SESSION['user_code'] == 2 && $user['user_code'] == 2) continue; ?>
                                     <tr>
                                         <td><?php echo $user['name']; ?></td>
                                         <td><?php echo $user['email']; ?></td>
@@ -74,9 +83,11 @@
                                         <td><?php echo date("n/j/Y", strtotime($user['created_date'])); ?></td>
                                         <td>
                                             <?php if ($_SESSION['user_code'] == 1): ?>
+                                            <?php if ($user['user_code'] == 3): ?>
                                             <a href="server/promoteUserAction.php?id=<?php echo $user['id']; ?>" class="btn btn-success btn-xs">
                                                 <span class="glyphicon glyphicon-hand-up"></span> Promote
                                             </a>
+                                            <?php endif; ?>
                                             <a href="server/deleteUserAction.php?id=<?php echo $user['id']; ?>" class="btn btn-danger btn-xs">
                                                 <span class="glyphicon glyphicon-trash"></span> Delete
                                             </a>
@@ -97,7 +108,11 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="reports">
                             <br>
+                            <?php if ($_SESSION['user_code'] == 1): ?>
+                            <p>These ads have been reported four or more times. Remove them, if necessary.</p>
+                            <?php else: ?>
                             <p>Vote on whether recently reported ads are good or malicious.</p>
+                            <?php endif; ?>
                             <?php if (count($ads) == 0): ?>
                             <br>
                             <p class="text-center"><b>No reported ads found.</b></p>
@@ -115,18 +130,27 @@
                                 <tr>
                                     <td><a href="ad.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a></td>
                                     <td><?php echo $ad['email']; ?></td>
-                                    <td><?php echo $ad['price']; ?></td>
+                                    <td>
+                                    <?php 
+                                        if ($ad['price'] == -1)
+                                            echo 'Contact';
+                                        elseif ($ad['price'] == 0)
+                                            echo 'Free';
+                                        else
+                                            echo '$' . number_format($ad['price']);
+                                    ?>
+                                    </td>
                                     <td><?php echo date("n/j/Y", strtotime($ad['date'])); ?></td>
                                     <td>
                                         <?php if ($_SESSION['user_code'] == 1): ?>
-                                        <a href="server/deleteUserAction.php?id=<?php echo $ad['id']; ?>" class="btn btn-danger btn-xs">
+                                        <a href="server/deleteAdAction.php?id=<?php echo $ad['id']; ?>" class="btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-trash"></span> Delete
                                         </a>
                                         <?php else: ?>
-                                        <a href="server/reportAction.php?report=down&id=<?php echo $ad['id']; ?>" class="btn btn-success btn-xs">
+                                        <a href="server/reportAction.php?redir=dashboard&report=down&id=<?php echo $ad['id']; ?>" class="btn btn-success btn-xs">
                                             <span class="glyphicon glyphicon-thumbs-up"></span> Good
                                         </a>
-                                        <a href="server/reportAction.php?report=up&id=<?php echo $ad['id']; ?>" class="btn btn-danger btn-xs">
+                                        <a href="server/reportAction.php?redir=dashboard&report=up&id=<?php echo $ad['id']; ?>" class="btn btn-danger btn-xs">
                                             <span class="glyphicon glyphicon-thumbs-down"></span> Malicious
                                         </a>
                                         <?php endif; ?>

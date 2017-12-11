@@ -28,10 +28,11 @@
             $price = $price_option;
     }
 
-    if (isset($_FILES['image']))
-        $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
-    else
-        $image = NULL;
+    $image = NULL;
+    if (array_key_exists('image', $_FILES)) {
+        if (isset($_FILES['image']))
+            $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
+    }
 
     $query = "INSERT INTO ads (title, description, telephone, email, price, image, type, user_id, category_id) VALUES"
         . " ('$title', '$description', '$telephone', '$email', $price, '$image', $type, $user_id, $category_id)";
@@ -39,8 +40,7 @@
     $result = $db->insert($query);
 
     if ($result)
-        echo 'Success';
+        header("Location: ../browse.php?posted=1");
     else
-        echo 'Failure';
-    //$message = $result ? 'success' : 'error';
+        header("Location: ../browse.php?failed=1");
 ?>

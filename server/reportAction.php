@@ -20,5 +20,5 @@
     $value += ($_GET['report'] == 'up') ? 1 : -1;
 
     $db->query("UPDATE ads SET reports=$value WHERE id = " . $_GET['id']);
-    header('Location: ../' . $_GET['redir'] . 'dashboard.php');
+    header('Location: ../' . $_GET['redir'] . '.php?reported=true');
 ?>

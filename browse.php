@@ -10,8 +10,8 @@
     $price = (isset($_GET['price'])) ? $_GET['price'] : 0;
     $type = (isset($_GET['type'])) ? $_GET['type'] : 2;
 
-    if ($search != 0)
-        array_push($conditions, "'$search' LIKE CONCAT('%',title,'%')");
+    if ($search !== 0)
+        array_push($conditions, "title LIKE '%$search%'");
     if ($category != 0)
         array_push($conditions, "category_id = $category");
     if ($price != 0) {
@@ -51,13 +51,29 @@
 
     <div class="container">
         <div class="row">
+            <?php if (isset($_GET['reported'])): ?>
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                Ad report submitted successfully.
+            </div>
+            <?php elseif (isset($_GET['posted'])): ?>
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Congratulations!</strong> Your ad has been posted.
+            </div>
+            <?php elseif (isset($_GET['failed'])): ?>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>Sorry!</strong> There was a problem posting your ad.
+            </div>
+            <?php endif; ?>
             <div class="col-sm-9 col-md-10 col-lg-10">
                 <h2>Browse</h2>
-            <?php if (count($ads) == 0): ?>
-                <br>
-                <h4>Sorry, no ads found.</h4>
-            <?php endif; ?>
                 <h4 id="search-label"></h4>
+                <?php if (count($ads) == 0): ?>
+                <br>
+                <p class="text-center">Sorry, no ads found.</p>
+                <?php endif; ?>
                 <div class="list-group">
                     <?php foreach($ads as $ad): ?>
                     <?php $cat = $db->query("SELECT label FROM categories WHERE id = " . $ad['category_id'])[0]['label']; ?>
@@ -148,6 +164,7 @@
                     </div>
                     <button class="btn btn-primary">Filter</button>
                 </form>
+                <br>
             </div>
         </div>
     </div>

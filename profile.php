@@ -60,9 +60,9 @@
                         </td>
                         <td><?php echo date("n/j/Y", strtotime($ad['date'])); ?></td>
                         <td>
-                            <button class="btn btn-danger btn-xs">
+                            <a href="server/deleteAdAction.php?id=<?php echo $ad['id']; ?>" class="btn btn-danger btn-xs">
                                 <span class="glyphicon glyphicon-trash"></span> Delete
-                            </button>
+                            </a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

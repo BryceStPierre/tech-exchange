@@ -10,12 +10,13 @@
         $password = $_POST['password'];
 
     $result = $db->query("SELECT * FROM users WHERE email = '$email' AND password = '$password'");
-
-    if ($result == 0)
+    
+    if ($result == 0 || sizeof($result) == 0)
         header('Location: ../signin.php?signin=error');
-
-    $_SESSION['signed_in'] = TRUE;
-    $_SESSION['user_code'] = $result[0]['user_code'];
-    $_SESSION['user'] = $result[0];
-    header('Location: ../browse.php?signin=success');
+    else {
+        $_SESSION['signed_in'] = TRUE;
+        $_SESSION['user_code'] = $result[0]['user_code'];
+        $_SESSION['user'] = $result[0];
+        header('Location: ../browse.php?signin=success');
+    }
 ?>
