@@ -59,7 +59,7 @@
                     <?php if ($data['image']): ?>
                         <div class="list-group-item">
                             <p class="text-center">
-                                <img class="img-responsive img-rounded" src="data:image/jpeg;base64,<?php echo base64_encode( $data['image']); ?>" alt="Image">
+                                <img id="ad-image" class="img-responsive img-rounded" src="data:image/jpeg;base64,<?php echo base64_encode( $data['image']); ?>" alt="Image">
                             </p>
                         </div>
                     <?php endif; ?>

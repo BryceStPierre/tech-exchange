@@ -1,3 +1,11 @@
+.navbar {
+    border-radius: 0 !important;
+}
+
+.navbar .glyphicon-search {
+    color: #FFF !important;
+}
+
 .navbar-toggle {
     padding: 6px 12px;
 }
@@ -26,4 +34,9 @@
 
 #footer {
     background-color: #2C3E50;
+}
+
+#ad-image,
+#image-preview {
+    max-height: 300px;
 }

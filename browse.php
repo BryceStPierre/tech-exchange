@@ -88,7 +88,7 @@
                                 <h4 class="media-heading">
                                     <a href="ad.php?id=<?php echo $ad['id']; ?>"><?php echo $ad['title']; ?></a>
                                 </h4>
-                                <?php $label = ($ad['type'] === 0) ? "Buying" : "Selling"; ?>
+                                <?php $label = ($ad['type'] == 0) ? "Selling" : "Buying"; ?>
                                 <h5><?php echo $cat; ?> <span class="label label-info"><?php echo $label; ?></span></h5>
                                 <p>
                                     <?php 
