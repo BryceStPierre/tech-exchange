@@ -4,6 +4,7 @@ $(function () {
 
     $('navbar-nav li').removeClass('active');
 
+    // Analyze the current page, and update the navigation bar to show the active page.
     if (filename !== '') {
         if (filename === 'browse.php')
             $('#navbar-browse').addClass('active');

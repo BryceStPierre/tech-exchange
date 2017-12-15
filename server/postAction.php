@@ -4,6 +4,7 @@
     include('./database.php');
     $db = new Database();
 
+    // Extract POST variables from form submission.
     if (isset($_POST['title']))
         $title = addslashes($_POST['title']);
     if (isset($_POST['description']))
@@ -28,17 +29,21 @@
             $price = $price_option;
     }
 
+    // If an image is present, get the image contents in binary form.
     $image = NULL;
     if (array_key_exists('image', $_FILES)) {
         if (isset($_FILES['image']))
             $image = addslashes(file_get_contents($_FILES['image']['tmp_name']));
     }
 
+    // Create query with all parameters.
     $query = "INSERT INTO ads (title, description, telephone, email, price, image, type, user_id, category_id) VALUES"
         . " ('$title', '$description', '$telephone', '$email', $price, '$image', $type, $user_id, $category_id)";
 
+    // Insert record into database.
     $result = $db->insert($query);
 
+    // Redirect the user accordingly.
     if ($result)
         header("Location: ../browse.php?posted=1");
     else

@@ -1,5 +1,6 @@
 $(function () {
 
+    // Use AJAX to verify that the email address provided has not been used previously.
     $('#email').keyup(function () {
         $.post('server/emailAction.php', {
             email: $('#email').val()
@@ -23,6 +24,7 @@ $(function () {
         });
     });
 
+    // Verify that the confirmed password matches the original password, on keyup event.
     $('#confirmed').keyup(function () {
         var lastIndex = $(this).val().length - 1;
 
